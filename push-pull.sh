@@ -12,20 +12,20 @@ push() {
     cd "${HOME}/git/obsidian-vault"
     git add .
     git commit -m "Some updates"
-    git push origin master
+    git push
     cd
   elif [ $# = 1 ]
   then
     cd "${1}"
     git add .
     git commit -m "Some updates"
-    git push origin master
+    git push
     cd ..
   else
     cd "${1}"
     git add .
     git commit -m "${*:2}"
-    git push origin master
+    git push
     cd ..    
   fi
 }
@@ -37,11 +37,11 @@ pull() {
   if [ $# = 0 ]
   then
     cd "${HOME}/git/obsidian-vault"
-    git pull origin master
+    git pull
     cd
   else
     cd "${1}"
-    git pull origin master
+    git pull
     cd ..
   fi
 }

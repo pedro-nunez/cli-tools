@@ -19,14 +19,14 @@ for a paper published by Serre in 1955, then the output will say so and give the
 ## Push and pull shortcuts
 These functions only make the process of pushing and pulling from GitHub a bit quicker. They should be called from the folder containing the repository's folder. For example, the command
 ```
-$ push latex-templates updated blurb template
+$ push latex-templates update blurb template
 ```
 is equivalent to
 ```
 $ cd latex-templates
 $ git add .
-$ git commit -m "updated blurb template"
-$ git push origin master
+$ git commit -m "update blurb template"
+$ git push
 $ cd ..
 ```
 If no commit message is specified, "Some updates" is used by default.

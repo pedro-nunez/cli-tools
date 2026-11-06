@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+repo_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)"
+bin_dir="${HOME}/.local/bin"
+
+for script in open_book open_notes open_paper push_repo pull_repo; do
+    if [[ ! -x "$repo_dir/bin/$script" ]]; then
+        printf 'Not executable: %s\n' "$repo_dir/bin/$script" >&2
+        exit 1
+    fi
+done
+
+mkdir -p "$bin_dir"
+
+install_link() {
+    local name="$1"
+    local target="$repo_dir/bin/$2"
+    local destination="$bin_dir/$name"
+
+    if [[ -L "$destination" && "$(readlink "$destination")" == "$target" ]]; then
+        printf 'Already installed: %s\n' "$name"
+    elif [[ -e "$destination" || -L "$destination" ]]; then
+        printf 'Not replacing existing path: %s\n' "$destination" >&2
+        return 1
+    else
+        ln -s "$target" "$destination"
+        printf 'Installed: %s\n' "$name"
+    fi
+}
+
+install_link b open_book
+install_link n open_notes
+install_link p open_paper
+install_link push push_repo
+install_link pull pull_repo

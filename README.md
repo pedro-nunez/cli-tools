@@ -1,4 +1,4 @@
-# Bash utilities
+# CLI tools
 
 Small CLI utilities for Linux and macOS.
 They are written in Bash but work from either Bash or Zsh.

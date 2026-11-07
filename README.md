@@ -1,6 +1,6 @@
-# Bash functions
+# Bash utilities
 
-Small CLI functions for Linux and macOS.
+Small CLI utilities for Linux and macOS.
 They are written in Bash but work from either Bash or Zsh.
 
 ## Installation
@@ -13,17 +13,22 @@ git clone git@github.com:pedro-nunez/bash-functions.git "${HOME}/.hidden-repos/b
 "${HOME}/.hidden-repos/bash-functions/install"
 ```
 
-This links `open_book`, `open_notes`, `open_paper`, `push_repo`, and `pull_repo`
-to the shorter commands `b`, `n`, `p`, `push`, and `pull` in `~/.local/bin`.
-Unrelated existing files and links are not replaced. Make sure `~/.local/bin`
-is in your `PATH`.
+The installer creates symbolic links in `~/.local/bin`, making the following commands available:
 
-## Open references
-Open a book, lecture notes or a paper quickly from the terminal.
-References are matched by filename prefix in `~/Literature/books`,
-`~/Literature/notes`, and `~/Literature/papers`, respectively. A single matching
-file opens in the system's default application; multiple matches are listed.
-The commands use `open` on macOS and `xdg-open` on Linux.
+| Command | Script |
+|---------|--------|
+| `b` | `literature/open_book` |
+| `p` | `literature/open_paper` |
+| `n` | `literature/open_notes` |
+| `push` | `git/push_repo` |
+| `pull` | `git/pull_repo` |
+
+Make sure `~/.local/bin` is in your `PATH`. Running the installer again is safe; existing files and unrelated symbolic links are not overwritten.
+
+## Literature
+Quickly open books, papers, or lecture notes by filename prefix.
+The commands search for matching files in `~/Literature/books`, `~/Literature/papers`, and `~/Literature/notes`, respectively.
+These directories can be changed by setting `LITERATURE_DIR`.
 
 For example, naming the references according to BibLaTeX's alphabetic style citations,
 ```
@@ -37,23 +42,25 @@ $ p ser55
 for a paper published by Serre in 1955, then the output will say so
 and give the list of all available options.
 
-## Git shortcuts
+## Git
+
+Quickly push and pull repositories:
+
+```bash
+push [repository] [commit message...]
+pull [repository]
+```
+
+For example, from `~/git`:
+
+```bash
+push latex-templates Update note template
+pull latex-templates
+```
 These functions only make the process of pushing and pulling from GitHub a bit quicker.
 The first argument is the repo to be pushed or pulled,
 which is assumed to be located in the current directory.
 The remaining arguments are taken as commit message.
-For example, the command
-```
-$ push latex-templates Update note template
-```
-is equivalent to
-```
-$ cd latex-templates
-$ git add .
-$ git commit -m "Update note template"
-$ git push
-$ cd ..
-```
 If no commit message is specified, "Some updates" is used by default.
 If no argument is passsed, then a default repo is pushed or pulled.
 This default repo is configured at the top of `scripts/git_shortcuts`.

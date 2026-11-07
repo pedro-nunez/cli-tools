@@ -5,12 +5,12 @@ They are written in Bash but work from either Bash or Zsh.
 
 ## Installation
 
-Clone the repository into `~/.hidden-repos/bash-functions` and run the installation script:
+Clone the repository into `~/.hidden-repos/cli-tools` and run the installation script:
 
 ```bash
 mkdir -p "${HOME}/.hidden-repos"
-git clone git@github.com:pedro-nunez/bash-functions.git "${HOME}/.hidden-repos/bash-functions"
-"${HOME}/.hidden-repos/bash-functions/install"
+git clone git@github.com:pedro-nunez/cli-tools
+"${HOME}/.hidden-repos/cli-tools/install"
 ```
 
 The installer creates symbolic links in `~/.local/bin`, making the following commands available:

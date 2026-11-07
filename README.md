@@ -9,7 +9,7 @@ Clone the repository into `~/.hidden-repos/cli-tools` and run the installation s
 
 ```bash
 mkdir -p "${HOME}/.hidden-repos"
-git clone git@github.com:pedro-nunez/cli-tools
+git clone git@github.com:pedro-nunez/cli-tools.git "${HOME}/.hidden-repos/cli-tools"
 "${HOME}/.hidden-repos/cli-tools/install"
 ```
 

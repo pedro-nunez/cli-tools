@@ -31,7 +31,7 @@ open_reference() {
             if [[ "$(uname -s)" == "Darwin" ]]; then
                 open "${matches[0]}"
             else
-                xdg-open "${matches[0]}"
+                xdg-open "${matches[0]}" >/dev/null 2>&1
             fi
             ;;
         *)

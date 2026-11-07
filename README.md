@@ -10,7 +10,7 @@ Clone the repository into `~/.hidden-repos/bash-functions` and run the installat
 ```bash
 mkdir -p "${HOME}/.hidden-repos"
 git clone git@github.com:pedro-nunez/bash-functions.git "${HOME}/.hidden-repos/bash-functions"
-"${HOME}/.hidden-repos/bash-functions/scripts/install"
+"${HOME}/.hidden-repos/bash-functions/install"
 ```
 
 This links `open_book`, `open_notes`, `open_paper`, `push_repo`, and `pull_repo`

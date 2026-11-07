@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+DEFAULT_REPO="${DEFAULT_REPO:-${HOME}/git/updates}"
+
+repo="${1:-$DEFAULT_REPO}"
+if (($# > 0)); then
+    shift
+fi
+
+message="${*:-Some updates}"
+
+git -C "$repo" add .
+
+if git -C "$repo" diff --cached --quiet; then
+    printf 'No changes to commit.\n'
+else
+    git -C "$repo" commit -m "$message"
+fi
+
+git -C "$repo" push
